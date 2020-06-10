@@ -10,7 +10,7 @@ function getSelectionText() {
 
 function replaceSelectedText(text) {
   var txtArea = document.activeElement;
-  if (txtArea.tagName === "INPUT") {
+  if (txtArea.tagName === "INPUT" || txtArea.tagName === "TEXTAREA") {
     if (txtArea.selectionStart != undefined) {
       var startPos = txtArea.selectionStart;
       var endPos = txtArea.selectionEnd;
@@ -28,9 +28,8 @@ function replaceSelectedText(text) {
 
 chrome.runtime.onMessage.addListener(function (msg) {
   if (msg.text === "space-it-called") {
-    console.log("space-it-called recieved!");
     var selectedText = getSelectionText();
-    if (selectedText !== "") {
+    if (selectedText.trim()) {
       replaceSelectedText(spacer(selectedText));
     }
   }
