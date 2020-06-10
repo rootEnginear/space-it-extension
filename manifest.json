@@ -1,0 +1,18 @@
+{
+  "manifest_version": 2,
+  "name": "S p a c e I t",
+  "version": "0.0.1",
+  "description": "Make your text S P A C E D",
+  "icons": {},
+  "content_scripts": [
+    {
+      "matches": ["http://*/*", "https://*/*"],
+      "js": ["libs/space-it.js", "main.js"]
+    }
+  ],
+  "background": {
+    "scripts": ["background.js"],
+    "persistent": false
+  },
+  "permissions": ["contextMenus", "activeTab"]
+}
